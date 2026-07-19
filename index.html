@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sherif.Mohamed - Cybersecurity & Cloud Architect</title>
+    <meta name="description" content="Sherif.Mohamed - Level 2 Principle of Cybersecurity, Egyptian Soldier, Cloud & Security Architect. Zero-Trust, Cloudflare, Docker, and Homelab Expert." />
+    <meta name="theme-color" content="#0a0a0a">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --card: #1a1a1a;
+            --border: #333;
+            --accent: #00d4ff;
+            --accent2: #7b2ffc;
+            --shadow: rgba(0, 212, 255, 0.1);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light-mode {
+            --bg: #f5f5f5;
+            --text: #111;
+            --card: #ffffff;
+            --border: #ddd;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo span { -webkit-text-fill-color: var(--text); }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        nav a:hover { opacity: 1; color: var(--accent); }
+        .header-controls { display: flex; align-items: center; gap: 1rem; }
+        .theme-toggle {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .theme-toggle:hover { border-color: var(--accent); }
+        .lang-badge {
+            background: var(--card);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent);
+        }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero .title { font-size: 1.5rem; color: var(--text); opacity: 0.7; margin-bottom: 0.5rem; }
+        .hero .badge {
+            display: inline-block;
+            background: var(--card);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .hero .badge-ar {
+            display: inline-block;
+            background: var(--card);
+            color: var(--accent2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--accent2);
+            margin: 0.5rem 0 1rem;
+            font-size: 0.9rem;
+            direction: rtl;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text);
+            opacity: 0.7;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .hero .cta {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .hero .cta:hover { transform: scale(1.05); }
+        
+        /* Sections */
+        .section {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+        }
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .section .subtitle { color: var(--text); opacity: 0.5; margin-bottom: 2rem; }
+        
+        /* Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+        .card h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .card p { color: var(--text); opacity: 0.7; }
+        .card .icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        /* Badges */
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .badge-list span {
+            background: var(--bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+            color: var(--text);
+            opacity: 0.7;
+        }
+        .badge-list span:hover { border-color: var(--accent); opacity: 1; }
+        
+        .military-badge {
+            display: inline-block;
+            background: var(--card);
+            color: #ff6b6b;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #ff6b6b;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* Buttons */
+        .homelab-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .homelab-link:hover { transform: scale(1.05); }
+        
+        .btn-secondary {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 2rem;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            border: 1px solid var(--accent);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .contact-form button {
+            padding: 0.8rem;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .contact-form button:hover { transform: scale(1.02); }
+        
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-left: 2rem;
+            border-left: 2px solid var(--accent);
+        }
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .timeline-item .year {
+            font-weight: bold;
+            color: var(--accent);
+            min-width: 60px;
+        }
+        .timeline-item .content {
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        /* Screenshots */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .screenshot-item {
+            background: var(--card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+        .screenshot-item:hover { transform: scale(1.02); }
+        .screenshot-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            opacity: 0.3;
+            font-size: 0.8rem;
+        }
+        .screenshot-item p {
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        /* Social */
+        .social-links a {
+            color: var(--text);
+            opacity: 0.7;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links a:hover { opacity: 1; color: var(--accent); }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--text);
+            opacity: 0.5;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav a { margin-left: 1rem; font-size: 0.8rem; }
+            .two-col { grid-template-columns: 1fr; }
+            header { flex-direction: column; text-align: center; }
+            nav { margin-top: 1rem; }
+            .header-controls { margin-top: 0.5rem; }
+        }
+        
+        .arabic-text { direction: rtl; }
+        .flag { display: inline-block; margin: 0 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">Sherif.<span>Mohamed</span></div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#homelab">Homelab</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-controls">
+                <span class="lang-badge">🇪🇬 EN / عربي</span>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1>Sherif.Mohamed</h1>
+            <div class="title">🌐 Level 2 Principle of Cybersecurity</div>
+            <div>
+                <span class="badge">🇪🇬 Egyptian Soldier</span>
+                <span class="military-badge">🎖️ Military Service</span>
+            </div>
+            <div>
+                <span class="badge">🔐 Zero-Trust Security Architect</span>
+                <span class="badge-ar">🇪🇬 مهندس أمن سيبراني</span>
+            </div>
+            <p>
+                Building secure, scalable infrastructure with a soldier's discipline and a cybersecurity expert's precision.
+                Fluent in Arabic and English — bridging the gap between global security standards and local expertise.
+            </p>
+            <a href="#projects" class="cta">⚡ View My Work</a>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <h2>👤 About Me</h2>
+            <div class="two-col">
+                <div>
+                    <p style="margin-bottom:1rem; opacity:0.8;">
+                        I'm <strong>Sherif.Mohamed</strong>, a Level 2 Principle of Cybersecurity with a strong foundation in 
+                        zero-trust architecture, cloud security, and infrastructure automation. As an Egyptian soldier, 
+                        I bring discipline, resilience, and a mission-focused mindset to every project.
+                    </p>
+                    <p style="margin-bottom:1rem; opacity:0.8;">
+                        I've built and secured a fully cloud-accessible homelab with 15+ services — from media automation 
+                        to enterprise-grade monitoring. My expertise spans Cloudflare, Docker, Kubernetes, and modern 
+                        security frameworks.
+                    </p>
+                    <div style="margin-top:1rem;">
+                        <span class="badge-list">
+                            <span>🇪🇬 Egypt</span>
+                            <span>🔐 Cybersecurity</span>
+                            <span>☁️ Cloud Security</span>
+                            <span>🛡️ Zero-Trust</span>
+                            <span>📡 Military-Trained</span>
+                        </span>
+                    </div>
+                    <!-- Resume Download -->
+                    <div style="margin-top:1.5rem;">
+                        <a href="/cv-sherif-mohamed.pdf" download class="btn-secondary">
+                            📄 Download Resume
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="background:var(--card);">
+                        <h3>📜 مَن أنا</h3>
+                        <p style="direction: rtl; font-size: 0.95rem; opacity:0.8;">
+                            أنا <strong>شريف محمد</strong>، مبدأ أمن سيبراني المستوى الثاني، وجندي مصري. 
+                            أؤمن بأن الأمن السيبراني هو الدرع الذي يحمي الوطن. 
+                            أمتلك خبرة في بناء البنية التحتية الآمنة باستخدام Cloudflare و Docker و Kubernetes.
+                        </p>
+                        <p style="direction: rtl; margin-top:0.5rem; opacity:0.5; font-size: 0.9rem;">
+                            "الأمن السيبراني ليس مجرد مهنة، بل هو رسالة وواجب وطني."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+            <h2>🛠️ Core Competencies</h2>
+            <p class="subtitle">What I bring to the battlefield of cybersecurity</p>
+            <div class="grid">
+                <div class="card">
+                    <span class="icon">🔐</span>
+                    <h3>Zero-Trust Security</h3>
+                    <p>Cloudflare Access, OTP authentication, SSL/TLS everywhere, and least-privilege access models.</p>
+                    <div class="badge-list">
+                        <span>Cloudflare Access</span>
+                        <span>OTP</span>
+                        <span>mTLS</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">☁️</span>
+                    <h3>Cloud & Infrastructure</h3>
+                    <p>Cloudflare Tunnel, Nginx Proxy Manager, Docker, Kubernetes, and infrastructure as code.</p>
+                    <div class="badge-list">
+                        <span>Docker</span>
+                        <span>Kubernetes</span>
+                        <span>Cloudflare</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">📊</span>
+                    <h3>Monitoring & Observability</h3>
+                    <p>Uptime Kuma, Grafana, Prometheus, cAdvisor — full-stack monitoring and alerting.</p>
+                    <div class="badge-list">
+                        <span>Prometheus</span>
+                        <span>Grafana</span>
+                        <span>Uptime Kuma</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">🗄️</span>
+                    <h3>Media & Storage Automation</h3>
+                    <p>Jellyfin, Sonarr, Radarr, Bazarr, Nextcloud, Immich — automated media and cloud storage.</p>
+                    <div class="badge-list">
+                        <span>Jellyfin</span>
+                        <span>Nextcloud</span>
+                        <span>Immich</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">🌍</span>
+                    <h3>Languages</h3>
+                    <p>🇪🇬 Arabic (Native) & 🇬🇧 English (Fluent) — bilingual cybersecurity professional.</p>
+                    <div class="badge-list">
+                        <span>Arabic - Native</span>
+                        <span>English - Fluent</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">🎖️</span>
+                    <h3>Military & Leadership</h3>
+                    <p>Disciplined, mission-focused, and resilient — trained to operate under pressure.</p>
+                    <div class="badge-list">
+                        <span>Egyptian Armed Forces</span>
+                        <span>Leadership</span>
+                        <span>Resilience</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Security Badges -->
+            <div style="margin-top:2rem; padding:1rem; background:var(--card); border-radius:10px; border:1px solid var(--border);">
+                <h3 style="color:var(--accent); margin-bottom:0.5rem;">🏅 Certifications & Badges</h3>
+                <div class="badge-list">
+                    <span>✅ Cloudflare Zero-Trust Certified</span>
+                    <span>✅ Docker Certified</span>
+                    <span>✅ Cybersecurity Level 2</span>
+                    <span>✅ Kubernetes Fundamentals</span>
+                    <span>✅ Network Security Expert</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <h2>📁 Projects</h2>
+            <p class="subtitle">Real-world implementations with measurable impact</p>
+            <div class="grid">
+                <div class="card">
+                    <span class="icon">🏠</span>
+                    <h3>Enterprise Homelab</h3>
+                    <p>Fully secure, cloud-accessible homelab with 15+ services, zero-trust security, and central dashboard.</p>
+                    <div class="badge-list">
+                        <span>Cloudflare Tunnel</span>
+                        <span>15 Services</span>
+                        <span>Zero-Trust</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">📊</span>
+                    <h3>Monitoring Stack</h3>
+                    <p>Uptime Kuma, Grafana, Prometheus, and cAdvisor — full monitoring, alerting, and observability.</p>
+                    <div class="badge-list">
+                        <span>Uptime Kuma</span>
+                        <span>Grafana</span>
+                        <span>Prometheus</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">📧</span>
+                    <h3>Email Infrastructure</h3>
+                    <p>Cloudflare Email Routing with SPF, DKIM, and DMARC for secure and authenticated email delivery.</p>
+                    <div class="badge-list">
+                        <span>SPF</span>
+                        <span>DKIM</span>
+                        <span>DMARC</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="icon">🌐</span>
+                    <h3>Personal Portfolio</h3>
+                    <p>This website — a professional portfolio built with HTML/CSS, deployed on Cloudflare with SSL.</p>
+                    <div class="badge-list">
+                        <span>HTML/CSS</span>
+                        <span>Cloudflare</span>
+                        <span>SSL</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Screenshots -->
+            <div style="margin-top:2rem;">
+                <h3 style="color:var(--accent); margin-bottom:1rem;">📸 Project Showcase</h3>
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div style="height:120px; background:var(--bg); display:flex; align-items:center; justify-content:center; color:var(--text); opacity:0.3;">🖼️ Dashboard</div>
+                        <p>Heimdall Dashboard</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div style="height:120px; background:var(--bg); display:flex; align-items:center; justify-content:center; color:var(--text); opacity:0.3;">🖼️ Monitoring</div>
+                        <p>Uptime Kuma Status</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div style="height:120px; background:var(--bg); display:flex; align-items:center; justify-content:center; color:var(--text); opacity:0.3;">🖼️ Media</div>
+                        <p>Jellyfin Media Server</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section id="timeline" class="section">
+            <h2>📅 Journey & Achievements</h2>
+            <p class="subtitle">Key milestones in my cybersecurity career</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">2026</span>
+                    <div class="content">
+                        <strong>Enterprise Homelab</strong> — Built 15+ service zero-trust homelab with Cloudflare Tunnel and Heimdall dashboard.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2026</span>
+                    <div class="content">
+                        <strong>Level 2 Principle of Cybersecurity</strong> — Achieved advanced certification in cybersecurity principles and practices.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2025</span>
+                    <div class="content">
+                        <strong>Military Service</strong> — Completed training as an Egyptian soldier, developing discipline and resilience.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2025</span>
+                    <div class="content">
+                        <strong>Cloudflare Zero-Trust</strong> — Implemented full zero-trust architecture with Cloudflare Access and OTP.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">2024</span>
+                    <div class="content">
+                        <strong>Cybersecurity Foundation</strong> — Began professional journey in cybersecurity and infrastructure security.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section id="blog" class="section">
+            <h2>📝 Blog & Insights</h2>
+            <p class="subtitle">Thoughts on cybersecurity, cloud, and infrastructure</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>🔐 Zero-Trust Architecture Explained</h3>
+                    <p style="font-size:0.85rem; opacity:0.5;">July 2026</p>
+                    <p>Understanding zero-trust principles and how to implement them with Cloudflare Access and OTP.</p>
+                    <a href="#" style="color:var(--accent); text-decoration:none;">Read more →</a>
+                </div>
+                <div class="card">
+                    <h3>☁️ Building a Cloud-Accessible Homelab</h3>
+                    <p style="font-size:0.85rem; opacity:0.5;">June 2026</p>
+                    <p>Step-by-step guide to building a secure, cloud-accessible homelab with 15+ services.</p>
+                    <a href="#" style="color:var(--accent); text-decoration:none;">Read more →</a>
+                </div>
+                <div class="card">
+                    <h3>🌐 Cybersecurity in the Middle East</h3>
+                    <p style="font-size:0.85rem; opacity:0.5;">May 2026</p>
+                    <p>Exploring the growing cybersecurity landscape in the Middle East and the role of Egyptian experts.</p>
+                    <a href="#" style="color:var(--accent); text-decoration:none;">Read more →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOMELAB ACCESS -->
+        <section id="homelab" class="section">
+            <h2>🔗 Homelab Access</h2>
+            <p style="opacity:0.7; margin-bottom:1.5rem; max-width:700px;">
+                Access my secure homelab infrastructure — a fully operational, zero-trust environment with 
+                15+ services including media automation, cloud storage, monitoring, and security tools.
+            </p>
+            <a href="https://dashboard.elsha3er.uk" class="homelab-link" target="_blank">
+                🚀 Launch Homelab Dashboard
+            </a>
+            <!-- Live Status Badge -->
+            <div style="margin-top:1.5rem;">
+    <h3 style="color:var(--accent); font-size:1rem;">📊 Live System Status</h3>
+    <div style="background:var(--card); padding:1rem; border-radius:10px; border:1px solid var(--border); max-width:600px;">
+        <p style="opacity:0.7; margin-bottom:0.5rem;">🟢 All systems operational</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <span style="background:var(--bg); padding:0.3rem 0.8rem; border-radius:20px; font-size:0.8rem; border:1px solid #2ecc71; color:#2ecc71;">🟢 15 Services Online</span>
+            <span style="background:var(--bg); padding:0.3rem 0.8rem; border-radius:20px; font-size:0.8rem; border:1px solid var(--border);">📊 Monitored 24/7</span>
+            <span style="background:var(--bg); padding:0.3rem 0.8rem; border-radius:20px; font-size:0.8rem; border:1px solid var(--border);">🔐 Zero-Trust Protected</span>
+            </div>
+            <a href="https://status.elsha3er.uk" target="_blank" style="color:var(--accent); text-decoration:none; display:inline-block; margin-top:0.5rem;">
+            📊 View Full Status Dashboard →
+        </a>
+    </div>
+</div>
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <h2>📬 Contact</h2>
+            <div class="two-col">
+                <div>
+                    <p style="opacity:0.7; margin-bottom:0.5rem;">
+                        🇪🇬 متاح للتواصل باللغتين العربية والإنجليزية<br>
+                        Available in Arabic and English
+                    </p>
+                    <p style="margin:1rem 0;">
+                        <a href="mailto:admin@elsha3er.uk" style="color:var(--accent); text-decoration:none; font-size:1.2rem;">
+                            📧 admin@elsha3er.uk
+                        </a>
+                    </p>
+                    <div class="social-links">
+                        <a href="#">🔗 LinkedIn</a>
+                        <a href="#">🐙 GitHub</a>
+                        <a href="#">🐦 X</a>
+                    </div>
+                    <div style="margin-top:1rem;">
+                        <span class="badge-list">
+                            <span>📱 Available on Signal</span>
+                            <span>📧 Response within 24h</span>
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>✉️ Send a Message</h3>
+                        <form class="contact-form" action="https://formspree.io/your-email" method="POST">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                        <p style="font-size:0.7rem; opacity:0.5; margin-top:0.5rem;">
+                            Your message will be sent securely and I'll respond within 24 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 Sherif.Mohamed — Level 2 Principle of Cybersecurity 🇪🇬</p>
+            <p style="font-size:0.8rem; margin-top:0.5rem; direction: rtl;">
+                "الأمن السيبراني هو درع الوطن" — "Cybersecurity is the shield of the nation"
+            </p>
+            <p style="font-size:0.7rem; margin-top:0.5rem; opacity:0.5;">
+                Built with ❤️ and deployed on Cloudflare | SSL Secured | Zero-Trust Architecture
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Dark/Light Theme Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const btn = document.querySelector('.theme-toggle');
+            btn.textContent = document.body.classList.contains('light-mode') ? '🌞' : '🌓';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
